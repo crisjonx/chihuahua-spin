@@ -3,38 +3,46 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Chihuahua Spin — Leaderboard</title>
+  <title>Chihuahua Spin</title>
+
+  <!-- supabase-js (UMD) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+
   <style>
-    body { display:flex; flex-direction:column; align-items:center; margin:0; font-family:system-ui,Segoe UI,Roboto,Arial; padding:24px; }
-    #game { text-align:center; }
-    img#chihuahua { width:240px; height:auto; display:block; margin:0 auto; }
-    .leaderboard { margin-top:20px; width:320px; border:1px solid #ddd; padding:12px; border-radius:8px; }
-    .leaderboard h3 { margin:0 0 8px 0; }
-    .row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed #eee; }
-    .row.me { background:#f0f8ff; font-weight:600; }
-    #usernameDisplay { margin-top:8px; font-size:14px; color:#444; }
-    button { margin-top:12px; padding:8px 12px; border-radius:6px; cursor:pointer; }
-    input[type="text"] { padding:8px; border-radius:6px; border:1px solid #bbb; width:200px; }
-    #message { color:#b00; margin-top:8px; font-size:13px; min-height:18px; }
+    /* Extremely minimal design */
+    :root { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial; font-size:14px; color:#111; }
+    html,body { height:100%; margin:0; display:flex; align-items:center; justify-content:center; background:#fff; }
+    .wrap { width:320px; text-align:center; }
+    img#chihuahua { width:180px; height:auto; display:block; margin:0 auto 12px; }
+    p { margin:6px 0; }
+    #usernameDisplay { margin:8px 0; color:#444; font-size:13px; }
+    .controls { display:flex; gap:8px; justify-content:center; margin-top:10px; }
+    input[type="text"] { padding:8px; border:1px solid #ddd; border-radius:6px; width:160px; }
+    button { padding:8px 10px; border-radius:6px; border:1px solid #ddd; background:#fff; cursor:pointer; }
+    .leaderboard { margin-top:14px; border-top:1px solid #eee; padding-top:10px; text-align:left; }
+    .row { display:flex; justify-content:space-between; padding:6px 0; font-size:13px; }
+    .row.me { font-weight:700; background:transparent; }
+    #message { height:18px; color:#b00; font-size:12px; margin-top:8px; }
+    small.note { display:block; margin-top:6px; color:#666; font-size:12px; }
   </style>
 </head>
 <body>
-  <div id="game">
+  <div class="wrap">
     <img src="spin.gif" id="chihuahua" alt="Chihuahua Spin">
-    <p>You have sat through <span id="spinCount">0</span> <span id="spinText">spins</span>!</p>
+    <p>You have sat through <span id="spinCount">0</span> <span id="spinText">spins</span>.</p>
 
-    <div id="usernameDisplay"></div>
+    <div id="usernameDisplay">You: (not set)</div>
 
-    <div style="margin-top:10px;">
-      <button id="submitScoreBtn">Submit score</button>
-      <button id="changeNameBtn">Change name</button>
+    <div class="controls">
+      <button id="setNameBtn">Set name</button>
+      <button id="submitScoreBtn">Submit</button>
     </div>
 
     <div id="message"></div>
 
     <div class="leaderboard" id="leaderboard">
-      <h3>Leaderboard</h3>
-      <div id="leadersList">Loading...</div>
+      <strong>Leaderboard</strong>
+      <div id="leadersList"><small class="note">Loading…</small></div>
     </div>
   </div>
 
