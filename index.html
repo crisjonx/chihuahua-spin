@@ -1,30 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chihuahua Spin</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-            text-align: center;
-        }
-        
-        p {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chihuahua Spin — Leaderboard</title>
+  <style>
+    body { display:flex; flex-direction:column; align-items:center; margin:0; font-family:system-ui,Segoe UI,Roboto,Arial; padding:24px; }
+    #game { text-align:center; }
+    img#chihuahua { width:240px; height:auto; display:block; margin:0 auto; }
+    .leaderboard { margin-top:20px; width:320px; border:1px solid #ddd; padding:12px; border-radius:8px; }
+    .leaderboard h3 { margin:0 0 8px 0; }
+    .row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed #eee; }
+    .row.me { background:#f0f8ff; font-weight:600; }
+    #usernameDisplay { margin-top:8px; font-size:14px; color:#444; }
+    button { margin-top:12px; padding:8px 12px; border-radius:6px; cursor:pointer; }
+    input[type="text"] { padding:8px; border-radius:6px; border:1px solid #bbb; width:200px; }
+    #message { color:#b00; margin-top:8px; font-size:13px; min-height:18px; }
+  </style>
 </head>
 <body>
-    <div>
-        <img src="spin.gif" id="chihuahua" alt="Chihuahua Spin">
-        <p>You have sat through <span id="spinCount">0</span> <span id="spinText">spins</span>!</p>
+  <div id="game">
+    <img src="spin.gif" id="chihuahua" alt="Chihuahua Spin">
+    <p>You have sat through <span id="spinCount">0</span> <span id="spinText">spins</span>!</p>
+
+    <div id="usernameDisplay"></div>
+
+    <div style="margin-top:10px;">
+      <button id="submitScoreBtn">Submit score</button>
+      <button id="changeNameBtn">Change name</button>
     </div>
 
-    <script src="script.js"></script>
+    <div id="message"></div>
+
+    <div class="leaderboard" id="leaderboard">
+      <h3>Leaderboard</h3>
+      <div id="leadersList">Loading...</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
